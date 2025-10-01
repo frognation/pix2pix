@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "pix2pix: Setup Torch (macOS)",
+      "type": "shell",
+      "command": "bash scripts/setup_torch_mac.sh",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": []
+    },
+    {
+      "label": "pix2pix: Download facades dataset",
+      "type": "shell",
+      "command": "bash datasets/download_dataset.sh facades",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": [],
+      "dependsOn": ["pix2pix: Setup Torch (macOS)"]
+    },
+    {
+      "label": "pix2pix: Quick Train (CPU facades)",
+      "type": "shell",
+      "command": "bash scripts/quick_train_facades.sh quick_facades",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": [],
+      "dependsOn": ["pix2pix: Download facades dataset"]
+    },
+    {
+      "label": "pix2pix: Open Results (macOS)",
+      "type": "shell",
+      "command": "open results/quick_facades/val_latest/",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": []
+    }
+  ]
+}
